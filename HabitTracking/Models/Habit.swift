@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Habit: Identifiable {
+struct Habit: Codable, Identifiable {
     /*
          -> A type that can convert itself into and out of an external representation.
          -> When you use Codable as a type or a generic constraint, it matches any type that conforms to both protocols(Encodable and Decodable).
