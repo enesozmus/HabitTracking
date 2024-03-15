@@ -32,6 +32,9 @@ struct Habit: Codable, Identifiable {
     // init() -> Creates a UUID with RFC 4122 version 4 random bytes.
     var id: UUID = UUID()
     
+    var name: String {
+        didSet { lastUpdated = Date() }
+      }
     /*
          -> Property observers observe and respond to changes in a property’s value.
          -> Property observers provide useful means to respond to changes in properties.
