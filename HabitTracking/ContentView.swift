@@ -21,33 +21,37 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(
-                    header: Text("Daily Habits")
-                ) {
+                // ..
+                Section( header: Text("Daily Habits")) {
                     if viewModel.dailyHabits.isEmpty {
                         emptyHabitsText
                     } else {
                         //...
+                        ForEach(viewModel.dailyHabits) { item in
+                            HomeListCell(viewModel: .init(item: item))
+                        }
                     }
                 }
-                
-                Section(
-                    header: Text("Weekly Habits")
-                ) {
+                // ..
+                Section( header: Text("Weekly Habits")) {
                     if viewModel.weeklyHabits.isEmpty {
                         emptyHabitsText
                     } else {
                         // ...
+                        ForEach(viewModel.weeklyHabits) { item in
+                            HomeListCell(viewModel: .init(item: item))
+                        }
                     }
                 }
-                
-                Section(
-                    header: Text("Monthly Habits")
-                ) {
+                // ..
+                Section(header: Text("Monthly Habits")) {
                     if viewModel.monthlyHabits.isEmpty {
                         emptyHabitsText
                     } else {
                         // ...
+                        ForEach(viewModel.monthlyHabits) { item in
+                            HomeListCell(viewModel: .init(item: item))
+                        }
                     }
                 }
             }

@@ -19,6 +19,8 @@
 		DFD5D6352BA4BF54003F96FE /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD5D6342BA4BF54003F96FE /* ContentViewModel.swift */; };
 		DFD5D6382BA4C3BE003F96FE /* AddHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD5D6372BA4C3BE003F96FE /* AddHabitView.swift */; };
 		DFD5D63A2BA4C3D4003F96FE /* AddHabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD5D6392BA4C3D4003F96FE /* AddHabitViewModel.swift */; };
+		DFD5D63D2BA4C752003F96FE /* HomeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD5D63C2BA4C752003F96FE /* HomeListCell.swift */; };
+		DFD5D63F2BA4C75F003F96FE /* HomeListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD5D63E2BA4C75F003F96FE /* HomeListCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,8 @@
 		DFD5D6342BA4BF54003F96FE /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		DFD5D6372BA4C3BE003F96FE /* AddHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitView.swift; sourceTree = "<group>"; };
 		DFD5D6392BA4C3D4003F96FE /* AddHabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitViewModel.swift; sourceTree = "<group>"; };
+		DFD5D63C2BA4C752003F96FE /* HomeListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListCell.swift; sourceTree = "<group>"; };
+		DFD5D63E2BA4C75F003F96FE /* HomeListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,7 @@
 		DFD5D6332BA4BE4F003F96FE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DFD5D63B2BA4C71D003F96FE /* HomeListCell */,
 				DFD5D6362BA4C3A2003F96FE /* AddItem */,
 			);
 			path = Views;
@@ -121,6 +126,15 @@
 				DFD5D6392BA4C3D4003F96FE /* AddHabitViewModel.swift */,
 			);
 			path = AddItem;
+			sourceTree = "<group>";
+		};
+		DFD5D63B2BA4C71D003F96FE /* HomeListCell */ = {
+			isa = PBXGroup;
+			children = (
+				DFD5D63C2BA4C752003F96FE /* HomeListCell.swift */,
+				DFD5D63E2BA4C75F003F96FE /* HomeListCellViewModel.swift */,
+			);
+			path = HomeListCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,10 +210,12 @@
 				DFD5D6352BA4BF54003F96FE /* ContentViewModel.swift in Sources */,
 				DF27CD6D2BA49559009196C4 /* HabitCategory.swift in Sources */,
 				DFD5D6302BA4B914003F96FE /* ExternalRepresentation.swift in Sources */,
+				DFD5D63F2BA4C75F003F96FE /* HomeListCellViewModel.swift in Sources */,
 				DF27CD6B2BA4942B009196C4 /* Habit.swift in Sources */,
 				DF27CD5E2BA493A3009196C4 /* ContentView.swift in Sources */,
 				DFD5D6382BA4C3BE003F96FE /* AddHabitView.swift in Sources */,
 				DFD5D62E2BA4B886003F96FE /* IExternalRepresentation.swift in Sources */,
+				DFD5D63D2BA4C752003F96FE /* HomeListCell.swift in Sources */,
 				DFD5D63A2BA4C3D4003F96FE /* AddHabitViewModel.swift in Sources */,
 				DF27CD5C2BA493A3009196C4 /* HabitTrackingApp.swift in Sources */,
 				DFD5D6322BA4B99A003F96FE /* ExternalRepresentationHandler.swift in Sources */,
