@@ -10,6 +10,8 @@ import SwiftUI
 extension ContentView {
     final class ViewModel: ObservableObject {
         
+        var _isShowingAddHabitView = false
+        
         // MARK: - External Representation
         private let _handler: ExternalRepresentationHandler
         
@@ -20,7 +22,6 @@ extension ContentView {
             loadSavedHabitsOrDefault()
         }
         
-        // MARK: - Habit Properties
         @Published
         private(set) var dailyHabits = [Habit]() {
             didSet {
@@ -42,10 +43,6 @@ extension ContentView {
             }
         }
         
-        // MARK: - Other Properties
-        var _isShowingAddHabitView = false
-        
-        // MARK: - Methods
         private func loadSavedHabitsOrDefault() {
             dailyHabits = _handler.daily.decodeAndReturnSavedDataOrNil(
                 type: [Habit].self
@@ -60,8 +57,8 @@ extension ContentView {
             ) ?? []
         }
         
-        // MARK: - CRUD Operations
         
+        // MARK: - CRUD Operations
         func addHabit(
             name: inout String,
             category: Habit.Category,

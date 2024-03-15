@@ -51,7 +51,7 @@ struct ContentView: View {
                     }
                 }
             }
-            .navigationTitle("Better You")
+            .navigationTitle("Keep Going")
             .toolbar {
                 Button {
                     _isShowingAddHabit.toggle()
@@ -59,9 +59,16 @@ struct ContentView: View {
                     Image(systemName: "plus.circle")
                 }
             }
+            //...
+            .sheet(isPresented: $_isShowingAddHabit) {
+                AddHabitView(
+                    viewModel: .init(parentVM: self.viewModel)
+                )
+            }
         }
     }
 }
+
 
 extension ContentView {
     @ViewBuilder
