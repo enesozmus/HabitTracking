@@ -8,8 +8,8 @@
 import SwiftUI
 
 protocol IExternalRepresentation {
-  func encodeAndSave<T: Encodable>(_ items: T) -> Void
-  func decodeAndReturnSavedDataOrNil<T: Decodable>(type: T.Type) -> T?
+    func encodeAndSave<T: Encodable>(_ items: T) -> Void
+    func decodeAndReturnSavedDataOrNil<T: Decodable>(type: T.Type) -> T?
 }
 
 /*

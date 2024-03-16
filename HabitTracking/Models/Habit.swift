@@ -34,7 +34,7 @@ struct Habit: Codable, Identifiable {
     
     var name: String {
         didSet { lastUpdated = Date() }
-      }
+    }
     /*
          -> Property observers observe and respond to changes in a property’s value.
          -> Property observers provide useful means to respond to changes in properties.

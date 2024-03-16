@@ -12,6 +12,8 @@ struct ContentView: View {
     @StateObject
     var viewModel: ViewModel
     
+    @State private var _refresh: Bool = false
+    
     init(viewModel: ContentView.ViewModel = .init()) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
@@ -26,12 +28,25 @@ struct ContentView: View {
                     if viewModel.dailyHabits.isEmpty {
                         emptyHabitsText
                     } else {
-                        //...
+                        // ..
                         ForEach(viewModel.dailyHabits) { item in
-                            HomeListCell(viewModel: .init(item: item))
+                            NavigationLink {
+                                HabitDetailView(
+                                    viewModel: .init(item: item, parentVM: self.viewModel)
+                                )
+                            } label: {
+                                HomeListCell(viewModel: .init(item: item))
+                            }
                         }
+                        .onDelete(perform: viewModel.deleteDailyHabits)
                     }
                 }
+                // if you want you can also use this
+                //                Section {
+                //                    resetDailyButton
+                //                }
+                //                .listRowBackground(Color.clear)
+                
                 // ..
                 Section( header: Text("Weekly Habits")) {
                     if viewModel.weeklyHabits.isEmpty {
@@ -39,8 +54,15 @@ struct ContentView: View {
                     } else {
                         // ...
                         ForEach(viewModel.weeklyHabits) { item in
-                            HomeListCell(viewModel: .init(item: item))
+                            NavigationLink {
+                                HabitDetailView(
+                                    viewModel: .init(item: item, parentVM: self.viewModel)
+                                )
+                            } label: {
+                                HomeListCell(viewModel: .init(item: item))
+                            }
                         }
+                        .onDelete(perform: viewModel.deleteWeeklyHabits)
                     }
                 }
                 // ..
@@ -50,12 +72,39 @@ struct ContentView: View {
                     } else {
                         // ...
                         ForEach(viewModel.monthlyHabits) { item in
-                            HomeListCell(viewModel: .init(item: item))
+                            NavigationLink {
+                                HabitDetailView(
+                                    viewModel: .init(item: item, parentVM: self.viewModel)
+                                )
+                            } label: {
+                                HomeListCell(viewModel: .init(item: item))
+                            }
                         }
+                        .onDelete(perform: viewModel.deleteMonthlyHabits)
                     }
                 }
+                // ..
+                Section(
+                    footer: Text("Be careful, this removes all your habit trackers! Restart the app to see changes")
+                ) {
+                    resetAppButton
+                }
+                
             }
             .navigationTitle("Keep Going")
+            // ...
+            .confirmationDialog(
+                "This action cannot be undone",
+                isPresented: $viewModel._isConfirmingResetData,
+                titleVisibility: .visible
+            ) {
+                Button("Delete", role: .destructive) {
+                    viewModel.resetDefaults()
+                    _refresh.toggle()
+                }
+                Button("Cancel", role: .cancel) { }
+            }
+            // ...
             .toolbar {
                 Button {
                     _isShowingAddHabit.toggle()
@@ -75,6 +124,7 @@ struct ContentView: View {
 
 
 extension ContentView {
+    
     @ViewBuilder
     private var emptyHabitsText: some View {
         
@@ -88,6 +138,25 @@ extension ContentView {
             Spacer()
         }
     }
+    
+    @ViewBuilder
+    private var resetDailyButton: some View {
+        Button(role: .destructive) {
+            viewModel._isConfirmingResetDailyData.toggle()
+        } label: {
+            Label("Delete all Daily Habits", systemImage: "trash")
+        }
+    }
+    
+    @ViewBuilder
+    private var resetAppButton: some View {
+        Button(role: .destructive) {
+            viewModel._isConfirmingResetData.toggle()
+        } label: {
+            Label("Reset to Original", systemImage: "trash")
+        }
+    }
+    
 }
 
 #Preview {

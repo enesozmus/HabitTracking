@@ -11,6 +11,10 @@ extension ContentView {
     final class ViewModel: ObservableObject {
         
         var _isShowingAddHabitView = false
+        @Published
+        var _isConfirmingResetData: Bool = false
+        @Published
+        var _isConfirmingResetDailyData: Bool = false
         
         // MARK: - External Representation
         private let _handler: ExternalRepresentationHandler
@@ -130,5 +134,17 @@ extension ContentView {
         func deleteMonthlyHabits(at offsets: IndexSet) -> Void {
             monthlyHabits.remove(atOffsets: offsets)
         }
+        
+        func resetDailyHabits() {
+            dailyHabits.removeAll()
+        }
+        
+        // Reset app data
+        func resetDefaults() {
+            dailyHabits.removeAll()
+            weeklyHabits.removeAll()
+            monthlyHabits.removeAll()
+        }
+        
     }
 }
